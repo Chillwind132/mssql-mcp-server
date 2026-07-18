@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments / secrets
+.env
+.venv/
+venv/
+
+# Runtime logs (contain internal hostnames/queries — never commit)
+logs/
+*.log
+
+# Internal-only teardown script
+delete_mcp_read.sql
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,2 @@
+fastmcp==3.2.3
+pyodbc==5.1.0

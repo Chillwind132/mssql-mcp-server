@@ -1,0 +1,27 @@
+services:
+  mssql-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mssql-mcp
+    restart: unless-stopped
+    ports:
+      - "8007:8007"
+    environment:
+      - MCPO_PORT=8007
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DB_PASSWORD_IDLE_TTL_SECONDS=${DB_PASSWORD_IDLE_TTL_SECONDS:-3600}
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import socket; s=socket.socket(); s.settimeout(2); r=s.connect_ex(('127.0.0.1',8007)); s.close(); exit(0 if r==0 else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
