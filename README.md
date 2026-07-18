@@ -1,5 +1,9 @@
 # mssql-mcp-server
 
+[![License: MIT](https://img.shields.io/github/license/Chillwind132/mssql-mcp-server)](LICENSE)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
+
 Remote Microsoft SQL Server operations via ODBC, exposed as an MCP (Model Context Protocol) server. Connects to any SQL Server instance using per-caller credentials elicited at runtime — passwords live only in server memory with an idle TTL and are never logged.
 
 - **Query tools** — `connect` / `disconnect` / `list_sessions` session lifecycle, `execute_sql` with table/JSON/CSV output, and `explain_query` for estimated or actual Showplan XML execution plans
